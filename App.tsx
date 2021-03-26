@@ -1,17 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import { Searchbar } from 'react-native-paper'
+import { Searchbar } from 'react-native-paper';
+
+import { StatusBar as ExpoStatusBar } from 'expo-status-bar'
+
+import { RestaurantsScreen } from './src/features/restaurants/screens/restaurant.screen'
 
 export default function App() {
   return (
     <>
-      <SafeAreaView style={styles.container} >
-        <View style={styles.search} >
-          <Searchbar value="Hello" />
-        </View>
-
-      </SafeAreaView>
+      <RestaurantsScreen />
+      <ExpoStatusBar style='auto' />
     </>
   );
 }
