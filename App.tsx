@@ -1,7 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import { Searchbar } from 'react-native-paper';
+
+// import { ThemeProvider } from "styled-components";
+
 
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar'
 
