@@ -24,6 +24,7 @@ const getVariant = (position: string, size: string, theme: any): any => {
     return `${property}: ${value} `
 
 }
+//Suggestions props for exported component :) cool
 interface spacerProps {
     position: string,
     size: string,
