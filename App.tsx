@@ -23,6 +23,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
+import { Ionicons, Feather } from '@expo/vector-icons';
 
 import { RestaurantsScreen } from './src/features/restaurants/screens/restaurant.screen';
 
@@ -47,6 +48,7 @@ const Map = () => {
   </SafeArea>)
 }
 
+
 export default function App() {
   const [latoLoaded] = useLato({
     Lato_400Regular,
@@ -65,15 +67,36 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <NavigationContainer>
           <Tab.Navigator
+            screenOptions={({ route }) => {
+              return ({
+                tabBarIcon: ({ focused, color, size }) => {
+                  let iconName: any;
+
+                  if (route.name === 'Map') {
+                    return <Feather name="map-pin" size={size} color={color} />
+                  }
+                  else if (route.name === 'Settings') {
+                    iconName = 'settings-outline';
+                  } else if (route.name === 'Restaurant') {
+                    iconName = 'restaurant-outline'
+                  }
+
+                  // You can return any component that you like here!
+                  return <Ionicons name={iconName} size={size} color={color} />;
+                },
+              })
+            }}
             tabBarOptions={{
               activeTintColor: 'tomato',
               inactiveTintColor: 'gray',
+
+
             }}
           >
 
             <Tab.Screen name='Restaurant' component={RestaurantsScreen} />
-            <Tab.Screen name='Settings' component={Settings} />
             <Tab.Screen name='Map' component={Map} />
+            <Tab.Screen name='Settings' component={Settings} />
           </Tab.Navigator>
         </NavigationContainer>
         <ExpoStatusBar style='auto' />
