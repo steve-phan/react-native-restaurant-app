@@ -15,12 +15,37 @@ import {
   Oswald_400Regular,
 } from '@expo-google-fonts/oswald';
 
+// Tab Navigation 
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { StatusBar as ExpoStatusBar } from 'expo-status-bar'
-
-import { RestaurantsScreen } from './src/features/restaurants/screens/restaurant.screen'
 
 
+
+import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
+
+import { RestaurantsScreen } from './src/features/restaurants/screens/restaurant.screen';
+
+import { SafeArea } from './src/components/utility/safe-area.component'
+
+
+const Tab = createBottomTabNavigator();
+
+const Settings = () => {
+  return (
+    <SafeArea>
+      <Text>
+        Hello from Settings
+  </Text>
+    </SafeArea>)
+}
+const Map = () => {
+  return (<SafeArea>
+    <Text>
+      Hello from map
+  </Text>
+  </SafeArea>)
+}
 
 export default function App() {
   const [latoLoaded] = useLato({
@@ -38,9 +63,21 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantsScreen />
+        <NavigationContainer>
+          <Tab.Navigator
+            tabBarOptions={{
+              activeTintColor: 'tomato',
+              inactiveTintColor: 'gray',
+            }}
+          >
+
+            <Tab.Screen name='Restaurant' component={RestaurantsScreen} />
+            <Tab.Screen name='Settings' component={Settings} />
+            <Tab.Screen name='Map' component={Map} />
+          </Tab.Navigator>
+        </NavigationContainer>
+        <ExpoStatusBar style='auto' />
       </ThemeProvider>
-      <ExpoStatusBar style='auto' />
     </>
   );
 }
