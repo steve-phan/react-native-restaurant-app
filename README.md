@@ -7,3 +7,4 @@
 ### Experienced with typescript
 
 > Needed `interface` for props suggestions cool :)
+> When using a third lib sometimes we got error `implicitly has an 'any' type.`. so we need `declare module third-lib-name` into .d.ts file ! More about details [typeRoots](https://www.typescriptlang.org/tsconfig#typeRoots)

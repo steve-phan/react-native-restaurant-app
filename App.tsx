@@ -29,6 +29,9 @@ import { RestaurantsScreen } from './src/features/restaurants/screens/restaurant
 
 import { SafeArea } from './src/components/utility/safe-area.component'
 
+import { restaurantsRequest } from './src/services/restaurants.services'
+
+restaurantsRequest()
 
 const Tab = createBottomTabNavigator();
 
