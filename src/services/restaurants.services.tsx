@@ -1,13 +1,16 @@
 import { mocks } from './mock'
 import camelize from 'camelize'
+
+import { mockImages } from './mock/index'
+
 export const restaurantsRequest = (location = '41.878113,-87.629799') => {
 
 
     return new Promise((resolve, reject) => {
         const mock = mocks[location];
+        // const data = restaurantTransform(mock.results)
 
-        console.log(restaurantTransform(mock.results))
-        if (mock) resolve(mock)
+        if (mock) resolve(mock.results)
 
         reject("Not found")
     })
@@ -17,8 +20,18 @@ export const restaurantsRequest = (location = '41.878113,-87.629799') => {
 export const restaurantTransform = (result: any) => {
 
     const mappedResult = result.map((restaurant: any) => {
+        const photos = mockImages.map(photo => {
+            return mockImages[Math.floor(Math.random() * (mockImages.length))]
+        })
+        const { geometry, icon, name, vicinity, rating } = restaurant
+
         return {
-            ...restaurant,
+            photos,
+            geometry,
+            icon,
+            name,
+            rating,
+            address: vicinity,
             isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
             isClosedTemporarily: restaurant.business_status !== 'OPERATIONAL'
 
