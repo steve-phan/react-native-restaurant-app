@@ -1,9 +1,9 @@
-import { mocks } from './mock'
+import { mocks } from '../mock'
 import camelize from 'camelize'
 
-import { mockImages } from './mock/index'
+import { mockImages } from '../mock/index'
 
-export const restaurantsRequest = (location = '41.878113,-87.629799') => {
+export const restaurantsRequest = (location: any) => {
 
 
     return new Promise((resolve, reject) => {
