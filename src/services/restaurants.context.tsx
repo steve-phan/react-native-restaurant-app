@@ -3,6 +3,11 @@ import React, { useEffect, useState, createContext, useMemo, ReactComponentEleme
 
 import { restaurantTransform, restaurantsRequest } from './restaurants.services'
 
+type restaurantProp = {
+    restaurants: any[],
+    isLoading: boolean,
+    error: string
+}
 
 export const RestaurantContext: any = createContext(undefined)
 
