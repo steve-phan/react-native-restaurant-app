@@ -22,11 +22,14 @@ export const LocationContextProvider: React.FC = ({ children }: any) => {
     console.log(searchKeyword)
     setIsLoading(true);
     setKeyword(searchKeyword);
-    if (!searchKeyword.length) {
+
+  };
+  useEffect(() => {
+    if (!keyword.length) {
       // don't do anything
       return;
     }
-    locationRequest(searchKeyword.toLowerCase())
+    locationRequest(keyword.toLowerCase())
       .then(locationTransform)
       .then((result: any) => {
         setIsLoading(false);
@@ -37,7 +40,7 @@ export const LocationContextProvider: React.FC = ({ children }: any) => {
         setIsLoading(false);
         setError(err);
       });
-  };
+  }, [keyword])
 
   return (
     <LocationContext.Provider
