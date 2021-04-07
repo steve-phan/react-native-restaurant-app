@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { Ionicons, Feather } from '@expo/vector-icons';
 
-import { RestaurantsScreen } from '../../features/restaurants/screens/restaurant.screen';
+// import { RestaurantsScreen } from '../../features/restaurants/screens/restaurant.screen';
 
 import { SafeArea } from '../../components/utility/safe-area.component'
 
@@ -21,6 +21,7 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import { RestaurantsNavigator } from './restaurants.navigator'
 
 const Tab = createBottomTabNavigator();
 
@@ -78,7 +79,7 @@ export const AppNavigator = () => {
                     inactiveTintColor: 'gray',
                 }}
             >
-                <Tab.Screen name='Restaurant' component={RestaurantsScreen} />
+                <Tab.Screen name='Restaurant' component={RestaurantsNavigator} />
                 <Tab.Screen name='Map' component={Map} />
                 <Tab.Screen name='Settings' component={Settings} />
             </Tab.Navigator>
