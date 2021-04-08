@@ -19,7 +19,6 @@ export const LocationContextProvider: React.FC = ({ children }: any) => {
   const [error, setError] = useState(null);
 
   const onSearch = (searchKeyword: string) => {
-    console.log(searchKeyword)
     setIsLoading(true);
     setKeyword(searchKeyword);
 
@@ -34,7 +33,6 @@ export const LocationContextProvider: React.FC = ({ children }: any) => {
       .then((result: any) => {
         setIsLoading(false);
         setLocation(result);
-        console.log(result);
       })
       .catch((err: any) => {
         setIsLoading(false);
