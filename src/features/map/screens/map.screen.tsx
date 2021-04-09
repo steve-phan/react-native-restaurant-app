@@ -14,9 +14,17 @@ import { MapCallOut } from '../components/callout.component'
 const Map = styled(MapView)`
   height: 100%;
   width: 100%;
+  z-index: 2019;
+  position : absolute;
 `;
 
-export const MapScreen = () => {
+const CallOutContainer = styled(Callout)`
+   position: absolute;
+   z-index : 2030;
+
+`;
+
+export const MapScreen = ({ navigation }: any) => {
   const { location } = useContext(LocationContext);
   const { restaurants = [] } = useContext(RestaurantContext);
 
@@ -53,9 +61,9 @@ export const MapScreen = () => {
               }}
 
             >
-              <Callout>
+              <CallOutContainer onPress={() => navigation.navigate("RestaurantDetails", { restaurant })} >
                 <MapCallOut restaurant={restaurant} />
-              </Callout>
+              </CallOutContainer>
 
             </Marker>
           );
