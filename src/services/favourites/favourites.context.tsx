@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from 'react'
 
 
 
-const FavouritesContext = createContext<any>([]);
+export const FavouritesContext = createContext<any>(undefined);
 
 export const FavouritesContextProvider = ({ children }: any) => {
     const [favourites, setFavourites]: any = useState([]);
@@ -11,7 +11,10 @@ export const FavouritesContextProvider = ({ children }: any) => {
     }
     const remove = (restaurant: any) => {
         const removedFavourites = favourites.filter((item: any) => item.placeId !== restaurant.placeId)
+
+        setFavourites(removedFavourites)
     }
+
     return (
         <FavouritesContext.Provider
             value={{

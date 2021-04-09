@@ -23,7 +23,7 @@ export const restaurantTransform = (result: any) => {
         const photos = mockImages.map(photo => {
             return mockImages[Math.floor(Math.random() * (mockImages.length))]
         })
-        const { geometry, icon, name, vicinity, rating } = restaurant
+        const { geometry, icon, name, vicinity, rating, place_id } = restaurant
 
         return {
             photos,
@@ -31,6 +31,7 @@ export const restaurantTransform = (result: any) => {
             icon,
             name,
             rating,
+            place_id,
             address: vicinity,
             isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
             isClosedTemporarily: restaurant.business_status !== 'OPERATIONAL'
