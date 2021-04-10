@@ -29,16 +29,21 @@ interface spacerProps {
     position: string,
     size: string,
     children: any,
+    variant?: string
+
+}
+interface SapacerViewProps {
+    variant: string
 }
 
-const SpacerView = styled(View) <any>`
+const SpacerView = styled(View) <SapacerViewProps>`
     ${({ variant }) => variant}
 
 `;
 
 export const Spacer = ({ position, size, children }: spacerProps) => {
     const theme = useTheme();
-    const variant = getVariant(position, size, theme)
+    const variant: string = getVariant(position, size, theme)
     return <SpacerView variant={variant}>{children}</SpacerView>
 
 
