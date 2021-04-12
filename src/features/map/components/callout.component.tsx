@@ -10,7 +10,7 @@ export const MapCallOut = ({ restaurant }: any) => {
 
     return (
 
-        <CompactRestaurantInfo restaurant={restaurant} />
+        <CompactRestaurantInfo isMap restaurant={restaurant} />
 
     )
 }
